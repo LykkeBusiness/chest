@@ -1,3 +1,7 @@
+## Client-3.16.0 (August 03, 2022)
+
+* LT-3895: Upgrade Lykke.HttpClientGenerator nuget
+
 ## 2.28.0 Delivery 24 (May 27, 2022)
 
 * LT-3895: Upgrade Lykke.HttpClientGenerator nuget
