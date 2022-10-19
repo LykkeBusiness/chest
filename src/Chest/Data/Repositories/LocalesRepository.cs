@@ -9,6 +9,7 @@ using EFSecondLevelCache.Core.Contracts;
 using Lykke.Common.MsSql;
 using Lykke.Snow.Common.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace Chest.Data.Repositories
 {

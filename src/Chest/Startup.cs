@@ -180,7 +180,6 @@ namespace Chest
                 app.UseHsts();
             }
             
-            app.UseMiddleware<LogHandlerMiddleware>();
             app.UseMiddleware<ExceptionHandlerMiddleware>();
 
             app.UseRouting();
