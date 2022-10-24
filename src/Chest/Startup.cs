@@ -147,6 +147,8 @@ namespace Chest
 
             services.AddAutoMapper(typeof(AutoMapperProfile));
 
+            services.AddDatabaseDeveloperPageExceptionFilter();
+
             services.AddScoped<IDataService, DataService>();
             services.AddScoped<ILocalizedValuesRepository, LocalizedValuesRepository>();
             services.AddScoped<ILocalizedValuesService, LocalizedValuesService>();
@@ -173,7 +175,7 @@ namespace Chest
             {
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
-                app.UseDatabaseErrorPage();
+                app.UseMigrationsEndPoint();
             }
             else
             {

@@ -43,7 +43,7 @@
     <PackageReference Include="Lykke.Cqrs" Version="9.0.1" />
     <PackageReference Include="Lykke.MarginTrading.AssetService.Contracts" Version="4.29.2" />
     <PackageReference Include="Lykke.Middlewares" Version="3.6.1" />
-    <PackageReference Include="Lykke.Snow.Common" Version="2.4.0" />
+    <PackageReference Include="Lykke.Snow.Common" Version="1.52.0" />
     <PackageReference Include="Lykke.Snow.Common.Startup" Version="3.0.1" />
     <PackageReference Include="LykkeBiz.Common" Version="8.1.0" />
     <PackageReference Include="LykkeBiz.Common.MsSql" Version="4.1.0" />
