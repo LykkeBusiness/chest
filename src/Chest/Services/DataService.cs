@@ -3,6 +3,7 @@
 
 using System.Data;
 using Chest.Data.Entities;
+using EFCoreSecondLevelCacheInterceptor;
 
 namespace Chest.Services
 {
@@ -12,8 +13,6 @@ namespace Chest.Services
     using System.Threading.Tasks;
     using Data;
     using Exceptions;
-    using EFSecondLevelCache.Core;
-    using EFSecondLevelCache.Core.Contracts;
     using Microsoft.EntityFrameworkCore;
     using Serilog;
 
@@ -270,7 +269,7 @@ namespace Chest.Services
                     
                     await transaction.CommitAsync();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     try
                     {

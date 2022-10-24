@@ -1,14 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Chest.Client.Models;
 using Chest.Data.Entities;
-using Chest.Exceptions;
-using Chest.Extensions;
 using Chest.Models.v2;
 using Chest.Models.v2.LocalizedValues;
-using EFSecondLevelCache.Core;
-using EFSecondLevelCache.Core.Contracts;
+using EFCoreSecondLevelCacheInterceptor;
 using Lykke.Common.MsSql;
 using Lykke.Snow.Common.Model;
 using Microsoft.EntityFrameworkCore;

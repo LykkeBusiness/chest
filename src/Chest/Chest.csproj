@@ -37,20 +37,21 @@
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
     <PackageReference Include="CacheManager.Microsoft.Extensions.Caching.Memory" Version="1.2.0" />
     <PackageReference Include="CacheManager.Serialization.Json" Version="1.2.0" />
-    <PackageReference Include="CacheManager.Serialization.Json" Version="1.2.0" />
-    <PackageReference Include="EFSecondLevelCache.Core" Version="2.9.1" />
+    <PackageReference Include="EFCoreSecondLevelCacheInterceptor" Version="3.7.3" />
     <PackageReference Include="JsonDiffPatch.Net" Version="2.3.0" />
     <PackageReference Include="Lykke.Cqrs" Version="9.0.1" />
     <PackageReference Include="Lykke.MarginTrading.AssetService.Contracts" Version="4.29.2" />
     <PackageReference Include="Lykke.Middlewares" Version="3.6.1" />
-    <PackageReference Include="Lykke.Snow.Common" Version="2.4.0" />
+    <PackageReference Include="Lykke.Snow.Common" Version="1.52.0" />
     <PackageReference Include="Lykke.Snow.Common.Startup" Version="3.0.1" />
     <PackageReference Include="LykkeBiz.Common" Version="8.1.0" />
     <PackageReference Include="LykkeBiz.Common.MsSql" Version="4.1.0" />
+    <PackageReference Include="LykkeBiz.Cqrs" Version="11.1.0" />
     <PackageReference Include="LykkeBiz.HttpClientGenerator" Version="5.0.1" />
     <PackageReference Include="LykkeBiz.Logs.Serilog" Version="3.3.0" />
     <PackageReference Include="LykkeBiz.Messaging" Version="7.0.4" />
     <PackageReference Include="LykkeBiz.Messaging.RabbitMq" Version="3.0.1" />
+    <PackageReference Include="LykkeBiz.Snow.Cqrs" Version="1.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.10" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.0.0" />
