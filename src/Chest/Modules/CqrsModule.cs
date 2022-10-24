@@ -14,6 +14,7 @@ using Lykke.Messaging.Contract;
 using Lykke.Messaging.RabbitMq;
 using Lykke.Messaging.Serialization;
 using Lykke.Snow.Common.Startup;
+using Lykke.Snow.Cqrs;
 using MarginTrading.AssetService.Contracts.Currencies;
 using MarginTrading.AssetService.Contracts.ProductCategories;
 using Microsoft.Extensions.Logging;
@@ -41,33 +42,25 @@ namespace Chest.Modules
             builder.Register(context => new AutofacDependencyResolver(context)).As<IDependencyResolver>()
                 .SingleInstance();
 
-            var rabbitMqSettings = new RabbitMQ.Client.ConnectionFactory
-            {
-                Uri = new Uri(_settings.ConnectionString, UriKind.Absolute)
-            };
+         
 
 
             builder.RegisterAssemblyTypes(GetType().Assembly).Where(t =>
                 new[] {"Saga", "CommandsHandler", "Projection"}.Any(ending => t.Name.EndsWith(ending))).AsSelf();
 
-            builder.Register(ctx => CreateEngine(ctx, new MessagingEngine(
-                    new LykkeLoggerAdapter<CqrsModule>(ctx.Resolve<ILogger<CqrsModule>>()),
-                    new TransportResolver(new Dictionary<string, TransportInfo>
-                    {
-                        {
-                            "RabbitMq",
-                            new TransportInfo(rabbitMqSettings.Endpoint.ToString(), rabbitMqSettings.UserName,
-                                rabbitMqSettings.Password, "None", "RabbitMq")
-                        }
-                    }),
-                    new RabbitMqTransportFactory())))
+            builder.Register(CreateEngine)
                 .As<ICqrsEngine>()
                 .SingleInstance()
                 .AutoActivate();
         }
 
-        private CqrsEngine CreateEngine(IComponentContext ctx, IMessagingEngine messagingEngine)
+        private CqrsEngine CreateEngine(IComponentContext ctx)
         {
+            var rabbitMqSettings = new RabbitMQ.Client.ConnectionFactory
+            {
+                Uri = new Uri(_settings.ConnectionString, UriKind.Absolute)
+            };
+            
             var rabbitMqConventionEndpointResolver = new RabbitMqConventionEndpointResolver(
                 "RabbitMq",
                 SerializationFormat.MessagePack,
@@ -75,11 +68,13 @@ namespace Chest.Modules
 
             var log = new LykkeLoggerAdapter<CqrsModule>(ctx.Resolve<ILogger<CqrsModule>>());
             
-            var engine = new CqrsEngine(
+            var engine = new RabbitMqCqrsEngine(
                 log,
                 ctx.Resolve<IDependencyResolver>(),
-                messagingEngine,
                 new DefaultEndpointProvider(),
+                rabbitMqSettings.Endpoint.ToString(),
+                rabbitMqSettings.UserName,
+                rabbitMqSettings.Password,
                 true,
                 Register.DefaultEndpointResolver(rabbitMqConventionEndpointResolver),
                 RegisterContext(),
