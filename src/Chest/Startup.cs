@@ -11,6 +11,7 @@ using Chest.Extensions;
 using Chest.Modules;
 using Chest.Settings;
 using Common.Log;
+using EFCoreSecondLevelCacheInterceptor;
 using JetBrains.Annotations;
 using Lykke.Logs.Serilog;
 using Lykke.Snow.Common.Startup;
@@ -26,7 +27,6 @@ namespace Chest
     using Data;
     using Mappers;
     using Services;
-    using EFSecondLevelCache.Core;
     using Lykke.Middlewares;
     using Lykke.Middlewares.Mappers;
     using Microsoft.AspNetCore.Builder;
@@ -51,8 +51,9 @@ namespace Chest
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options => options
-                .UseSqlServer(_configuration.GetConnectionString("Chest")));
+            services.AddDbContext<ApplicationDbContext>((serviceProvider, options) => options
+                .UseSqlServer(_configuration.GetConnectionString("Chest"))
+                .AddInterceptors(serviceProvider.GetRequiredService<SecondLevelCacheInterceptor>()));
 
             services
                 .AddControllers()
@@ -79,9 +80,13 @@ namespace Chest
                 .WithExpiration(ExpirationMode.Sliding, cacheExpiration)
                 .Build();
 
-            services.AddEFSecondLevelCache();
+            services.AddEFSecondLevelCache(options =>
+                options.UseCacheManagerCoreProvider().DisableLogging(true).UseCacheKeyPrefix("EF_")
+            );
             services.AddSingleton(typeof(ICacheManager<>), typeof(BaseCacheManager<>));
             services.AddSingleton(typeof(ICacheManagerConfiguration), cacheManagerConfiguration);
+            
+
 
             // Configure versions
             services.AddApiVersioning(o =>
@@ -147,6 +152,8 @@ namespace Chest
 
             services.AddAutoMapper(typeof(AutoMapperProfile));
 
+            services.AddDatabaseDeveloperPageExceptionFilter();
+
             services.AddScoped<IDataService, DataService>();
             services.AddScoped<ILocalizedValuesRepository, LocalizedValuesRepository>();
             services.AddScoped<ILocalizedValuesService, LocalizedValuesService>();
@@ -173,14 +180,13 @@ namespace Chest
             {
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
-                app.UseDatabaseErrorPage();
+                app.UseMigrationsEndPoint();
             }
             else
             {
                 app.UseHsts();
             }
             
-            app.UseMiddleware<LogHandlerMiddleware>();
             app.UseMiddleware<ExceptionHandlerMiddleware>();
 
             app.UseRouting();

@@ -90,13 +90,13 @@ namespace Chest
 
         private static IHost BuildHost(string[] args, IConfiguration configuration) =>
             Host.CreateDefaultBuilder(args)
+                .UseSerilog()
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder
                         .UseConfiguration(configuration)
-                        .UseStartup<Startup>()
-                        .UseSerilog();
+                        .UseStartup<Startup>();
                 }).Build();
     }
 }
