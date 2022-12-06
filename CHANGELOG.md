@@ -1,3 +1,11 @@
+## 2.29.0 Nova 2 Delivery 28 (October 31, 2022).
+
+* LT-3721: NET 6 migration
+
+### Deployment
+* NET 6 runtime is required
+* Dockerfile is updated to use native Microsoft images (see [DockerHub](https://hub.docker.com/_/microsoft-dotnet-runtime/))
+
 ## Client-3.16.0 (August 03, 2022)
 
 * LT-3895: Upgrade Lykke.HttpClientGenerator nuget
@@ -50,10 +58,12 @@
 * Add new section to appsettings.json
 
 ```json
-"CqrsSettings": {
+{
+  "CqrsSettings": {
     "RetryDelay": "00:00:02",
     "EnvironmentName": "dev"
   }
+}
 ```
 * Add connection string to RabbitMq
 
