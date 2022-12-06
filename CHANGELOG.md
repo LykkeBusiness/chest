@@ -1,3 +1,7 @@
+## 2.29.1 Nova 2 Delivery 28. Hotfix 3 (December 6, 2022).
+
+* LT-4310: Upgrade LykkeBiz.Logs.Serilog to 3.3.1
+
 ## 2.29.0 Nova 2 Delivery 28 (October 31, 2022).
 
 * LT-3721: NET 6 migration
