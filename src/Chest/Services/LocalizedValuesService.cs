@@ -8,6 +8,7 @@ using Chest.Data.Repositories;
 using Chest.Models.v2;
 using Chest.Models.v2.LocalizedValues;
 using Common;
+using Lykke.Snow.Common;
 using Lykke.Snow.Common.Model;
 using AuditDataType = Chest.Models.v2.Audit.AuditDataType;
 
@@ -103,6 +104,9 @@ namespace Chest.Services
         public async Task<PaginatedResponse<LocalizedValueByKey>> GetAllAsync(int skip = 0,
             int take = 0)
         {
+
+            (skip, take) = PaginationUtils.ValidateSkipAndTake(skip, take);
+
             var paginatedResponse = await _localizedValuesRepository.GetAllAsync(skip, take);
 
             var valuesByKey = paginatedResponse.Contents.GroupBy(v => v.Key);
