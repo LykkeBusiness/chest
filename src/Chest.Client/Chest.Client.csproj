@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <LangVersion>latest</LangVersion>
-    <Version>3.6.0</Version>
+    <LangVersion>8.0</LangVersion>
+    <Version>3.16.0</Version>
     <Description>Provides a client on Chest.
 The chest is a metadata service which saves and fetches data against three keys. Category, Collection and Key.
 It also provides endpoints to fetch list of all categories, collections and keys in the system.</Description>
@@ -11,11 +11,10 @@ It also provides endpoints to fetch list of all categories, collections and keys
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Lykke.Common" Version="7.5.0" />
-    <PackageReference Include="LykkeBiz.HttpClientGenerator" Version="4.5.3" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.11" />
+    <PackageReference Include="LykkeBiz.HttpClientGenerator" Version="5.0.1" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.24" />
     <PackageReference Include="Refit" Version="5.2.1" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
   </ItemGroup>
 
 </Project>
