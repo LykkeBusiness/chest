@@ -5,18 +5,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Autofac;
-using AutoMapper;
 using Chest.Data.Repositories;
 using Chest.Extensions;
 using Chest.Modules;
 using Chest.Settings;
-using Common.Log;
 using EFCoreSecondLevelCacheInterceptor;
 using JetBrains.Annotations;
-using Lykke.Logs.Serilog;
+using Lykke.Cqrs;
 using Lykke.Snow.Common.Startup;
 using Lykke.Snow.Common.Startup.ApiKey;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Serilog;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -174,7 +173,7 @@ namespace Chest
         }
 
         [UsedImplicitly]
-        public void Configure(IApplicationBuilder app, IHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostEnvironment env, IHostApplicationLifetime applicationLifetime)
         {
             if (env.IsDevelopment())
             {
@@ -210,6 +209,22 @@ namespace Chest
                 x.RoutePrefix = "swagger/ui";
                 x.SwaggerEndpoint($"/swagger/v2/swagger.json", $"{ApiTitle} v2");
                 x.EnableValidator(null);
+            });
+
+            applicationLifetime.ApplicationStarted.Register(() =>
+            {
+                var logger = app.ApplicationServices.GetService<ILogger<Startup>>();
+                try
+                {
+                    app.ApplicationServices.GetRequiredService<ICqrsEngine>().StartSubscribers();
+                }
+                catch (Exception e)
+                {
+                    Log.Fatal(e, "Failed to start CQRS engine");
+                    applicationLifetime.StopApplication();
+                    return;
+                }
+                logger.LogInformation("Application started");
             });
             
             app.InitializeDatabase();
