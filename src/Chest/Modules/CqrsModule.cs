@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Autofac;
 using Chest.Projections;
@@ -9,11 +8,7 @@ using Lykke.Cqrs.Configuration;
 using Lykke.Cqrs.Configuration.BoundedContext;
 using Lykke.Cqrs.Configuration.Routing;
 using Lykke.Cqrs.Middleware.Logging;
-using Lykke.Messaging;
-using Lykke.Messaging.Contract;
-using Lykke.Messaging.RabbitMq;
 using Lykke.Messaging.Serialization;
-using Lykke.Snow.Common.Startup;
 using Lykke.Snow.Cqrs;
 using MarginTrading.AssetService.Contracts.Currencies;
 using MarginTrading.AssetService.Contracts.ProductCategories;
@@ -24,8 +19,6 @@ namespace Chest.Modules
     internal class CqrsModule : Module
     {
         private const string DefaultRoute = "self";
-        private const string DefaultPipeline = "commands";
-        private const string DefaultEventPipeline = "events";
         private readonly long _defaultRetryDelayMs;
         private readonly CqrsSettings _settings;
         private readonly CqrsContextNamesSettings _contextNames;
@@ -42,16 +35,12 @@ namespace Chest.Modules
             builder.Register(context => new AutofacDependencyResolver(context)).As<IDependencyResolver>()
                 .SingleInstance();
 
-         
-
-
             builder.RegisterAssemblyTypes(GetType().Assembly).Where(t =>
                 new[] {"Saga", "CommandsHandler", "Projection"}.Any(ending => t.Name.EndsWith(ending))).AsSelf();
 
             builder.Register(CreateEngine)
                 .As<ICqrsEngine>()
-                .SingleInstance()
-                .AutoActivate();
+                .SingleInstance();
         }
 
         private CqrsEngine CreateEngine(IComponentContext ctx)
@@ -66,10 +55,10 @@ namespace Chest.Modules
                 SerializationFormat.MessagePack,
                 environment: _settings.EnvironmentName);
 
-            var log = new LykkeLoggerAdapter<CqrsModule>(ctx.Resolve<ILogger<CqrsModule>>());
+            var loggerFactory = ctx.Resolve<ILoggerFactory>();
             
             var engine = new RabbitMqCqrsEngine(
-                log,
+                loggerFactory,
                 ctx.Resolve<IDependencyResolver>(),
                 new DefaultEndpointProvider(),
                 rabbitMqSettings.Endpoint.ToString(),
@@ -78,10 +67,8 @@ namespace Chest.Modules
                 true,
                 Register.DefaultEndpointResolver(rabbitMqConventionEndpointResolver),
                 RegisterContext(),
-                Register.CommandInterceptors(new DefaultCommandLoggingInterceptor(log)),
-                Register.EventInterceptors(new DefaultEventLoggingInterceptor(log)));
-
-            engine.StartSubscribers();
+                Register.CommandInterceptors(new DefaultCommandLoggingInterceptor(loggerFactory)),
+                Register.EventInterceptors(new DefaultEventLoggingInterceptor(loggerFactory)));
 
             return engine;
         }
