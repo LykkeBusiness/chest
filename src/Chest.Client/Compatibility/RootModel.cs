@@ -13,25 +13,21 @@ namespace Chest.Client.AutorestClient.Models
         /// <summary>
         /// Gets or sets title
         /// </summary>
-        [Required]
         public string Title { get; set; }
 
         /// <summary>
         /// Gets or sets version
         /// </summary>
-        [Required]
         public string Version { get; set; }
 
         /// <summary>
         /// Gets or sets OS
         /// </summary>
-        [Required]
         public string OS { get; set; }
 
         /// <summary>
         /// Gets or sets process id
         /// </summary>
-        [Required]
         public int ProcessId { get; set; }
     }
 }
