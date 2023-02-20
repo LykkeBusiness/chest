@@ -7,6 +7,6 @@ namespace Chest.Client.Models.Requests
         [Required]
         public string Id { get; set; }
         [Required]
-        public bool IsDefault { get; set; }
+        public bool? IsDefault { get; set; }
     }
 }
