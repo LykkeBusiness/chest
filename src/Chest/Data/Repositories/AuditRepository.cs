@@ -4,6 +4,7 @@ using Chest.Data.Entities;
 using Chest.Models.v2;
 using Chest.Models.v2.Audit;
 using Lykke.Common.MsSql;
+using Lykke.Snow.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace Chest.Data.Repositories
@@ -57,8 +58,9 @@ namespace Chest.Data.Repositories
 
             query = query.OrderByDescending(x => x.Timestamp);
 
-            if (skip.HasValue && take.HasValue)
-                query = query.Skip(skip.Value).Take(take.Value);
+            (skip, take) = PaginationUtils.ValidateSkipAndTake(skip, take);
+
+            query = query.Skip(skip.Value).Take(take.Value);
 
             var contents = await query.ToListAsync();
 

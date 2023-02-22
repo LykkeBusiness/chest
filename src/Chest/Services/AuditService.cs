@@ -4,6 +4,7 @@ using Chest.Data.Repositories;
 using Chest.Models.v2;
 using Chest.Models.v2.Audit;
 using JsonDiffPatchDotNet;
+using Lykke.Snow.Common;
 
 namespace Chest.Services
 {
@@ -18,7 +19,7 @@ namespace Chest.Services
 
         public Task<PaginatedResponse<IAuditModel>> GetAll(AuditLogsFilterDto filter, int? skip, int? take)
         {
-            (skip, take) = ValidateSkipAndTake(skip, take);
+            (skip, take) = PaginationUtils.ValidateSkipAndTake(skip, take);
 
             return _auditRepository.GetAll(filter, skip, take);
         }
@@ -85,23 +86,6 @@ namespace Chest.Services
                 DataReference = referenceId,
                 DataDiff = diffResult
             };
-        }
-
-        private static (int? skip, int? take) ValidateSkipAndTake(int? skip, int? take)
-        {
-            if (skip.HasValue && skip.Value < 0)
-                skip = 0;
-
-            if (skip.HasValue && !take.HasValue)
-                take = 20;
-
-            if (!skip.HasValue && take.HasValue)
-                skip = 0;
-
-            if (take.HasValue && take.Value <= 0)
-                take = 20;
-
-            return (skip, take);
         }
     }
 }
