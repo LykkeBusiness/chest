@@ -9,6 +9,7 @@ using Lykke.Cqrs.Configuration.BoundedContext;
 using Lykke.Cqrs.Configuration.Routing;
 using Lykke.Cqrs.Middleware.Logging;
 using Lykke.Messaging.Serialization;
+using Lykke.Snow.Common.Startup;
 using Lykke.Snow.Cqrs;
 using MarginTrading.AssetService.Contracts.Currencies;
 using MarginTrading.AssetService.Contracts.ProductCategories;
@@ -55,10 +56,10 @@ namespace Chest.Modules
                 SerializationFormat.MessagePack,
                 environment: _settings.EnvironmentName);
 
-            var loggerFactory = ctx.Resolve<ILoggerFactory>();
+            var log = new LykkeLoggerAdapter<CqrsModule>(ctx.Resolve<ILogger<CqrsModule>>());
             
             var engine = new RabbitMqCqrsEngine(
-                loggerFactory,
+                log,
                 ctx.Resolve<IDependencyResolver>(),
                 new DefaultEndpointProvider(),
                 rabbitMqSettings.Endpoint.ToString(),
@@ -67,8 +68,8 @@ namespace Chest.Modules
                 true,
                 Register.DefaultEndpointResolver(rabbitMqConventionEndpointResolver),
                 RegisterContext(),
-                Register.CommandInterceptors(new DefaultCommandLoggingInterceptor(loggerFactory)),
-                Register.EventInterceptors(new DefaultEventLoggingInterceptor(loggerFactory)));
+                Register.CommandInterceptors(new DefaultCommandLoggingInterceptor(log)),
+                Register.EventInterceptors(new DefaultEventLoggingInterceptor(log)));
 
             return engine;
         }
