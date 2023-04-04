@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 namespace Chest.Client.Models.Requests
 {
@@ -6,7 +7,11 @@ namespace Chest.Client.Models.Requests
     {
         [Required]
         public string Id { get; set; }
-        [Required]
-        public bool IsDefault { get; set; }
+        [Required(ErrorMessage = "The IsDefault field is required.")]
+        [JsonProperty("isDefault")]
+        public bool? IsDefaultRequired { get; set; }
+
+        [JsonIgnore]
+        public bool IsDefault => IsDefaultRequired ?? default;
     }
 }
