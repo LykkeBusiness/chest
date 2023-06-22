@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Net;
 using Chest.Client.Extensions;
-using MoreLinq;
 using Newtonsoft.Json;
 using Refit;
 
