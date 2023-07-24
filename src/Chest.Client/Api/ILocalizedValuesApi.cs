@@ -2,6 +2,7 @@
 using Chest.Client.Models;
 using Chest.Client.Models.Requests;
 using Chest.Client.Models.Responses;
+using Lykke.Contracts.Responses;
 using Refit;
 
 namespace Chest.Client.Api
