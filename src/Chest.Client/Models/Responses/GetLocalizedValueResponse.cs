@@ -1,4 +1,6 @@
-﻿namespace Chest.Client.Models.Responses
+﻿using Lykke.Contracts.Responses;
+
+namespace Chest.Client.Models.Responses
 {
     /// <summary>
     /// Response model for get localized value by locale and key

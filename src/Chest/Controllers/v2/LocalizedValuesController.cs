@@ -10,9 +10,9 @@ using Chest.Client.Models.Responses;
 using Chest.Core;
 using Chest.Data.Entities;
 using Chest.Extensions;
-using Chest.Models.v2.Locales;
 using Chest.Models.v2.LocalizedValues;
 using Chest.Services;
+using Lykke.Contracts.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
