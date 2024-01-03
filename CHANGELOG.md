@@ -1,3 +1,45 @@
+## 2.33.0 - Nova 2. Delivery 36 (Aug 31, 2023)
+## What's changed
+* LT-4898: Update nugets.
+
+
+**Full change log**: https://github.com/lykkebusiness/chest/compare/nova-2.32.2...nova-2.33.0
+
+## 2.32.2 - Nova 2. Delivery 34. Hotfix 4 (Jul 3, 2023)
+## What's changed
+* LT-4823: Add direct dependency on Lykke.Snow.Common package
+
+**Full Changelog**: https://github.com/LykkeBusiness/chest/compare/nova-2.32.1...nova-2.32.2
+
+## 2.32.1 - Nova 2. Delivery 34. Hotfix 3 (Jun 23, 2023)
+## What's changed
+* LT-4795: Add direct dependency on Lykke.Snow.Common package
+
+**Full Changelog**: https://github.com/LykkeBusiness/chest/compare/nova-2.32.0...nova-2.32.1
+
+## 2.32.0 - Nova 2. Delivery 34 (Jun 5, 2023)
+## What's Changed
+
+* LT-4738: Upgrade `Lykke.MarginTrading.AssetService.Contracts` package
+
+
+**Full Changelog**: https://github.com/LykkeBusiness/chest/compare/nova-2.31.0...nova-2.32.0
+
+## 2.31.0 - Nova 2. Delivery 33 (Apr 10, 2023)
+## What's changed
+* LT-4528: Security issue.
+
+
+**Full change log**: https://github.com/lykkebusiness/chest/compare/nova-2.30.0...nova-2.31.0
+
+## 2.30.0 - Nova 2. Delivery 32 (Mar 1, 2023)
+## What's changed
+* LT-4411: Do not let the host keep running if startupmanager failed to start.
+* LT-4221: Validateskipandtake implementation replace.
+
+
+**Full change log**: https://github.com/lykkebusiness/chest/compare/nova-2.29.1...nova-2.30.0
+
 ## 2.29.1 Nova 2 Delivery 28. Hotfix 3 (December 6, 2022).
 
 * LT-4310: Upgrade LykkeBiz.Logs.Serilog to 3.3.1
