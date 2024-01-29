@@ -1,3 +1,8 @@
+## 2.34.0 - Nova 2. Delivery 39 (January 29, 2024)
+### What's changed
+* LT-5171: Add history of releases into `changelog.md`
+
+
 ## 2.33.0 - Nova 2. Delivery 36 (Aug 31, 2023)
 ## What's changed
 * LT-4898: Update nugets.
@@ -257,6 +262,11 @@ Property in connection string: Connection Timeout=300;
 ### Configuration changes
 
 - Added variable for Chest service API key. If variable is left unset or empty API call will be performed without authentication.
+
+```none
+  ChestClientSettings:ApiKey / CHEST_API_KEY 
+```
+ll will be performed without authentication.
 
 ```none
   ChestClientSettings:ApiKey / CHEST_API_KEY 
