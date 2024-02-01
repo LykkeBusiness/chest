@@ -89,7 +89,7 @@ namespace Chest.Client
  
                 if (property.PropertyType.IsGenericType && property.PropertyType.GetGenericTypeDefinition() == typeof(Nullable<>)) 
                 { 
-                    property.SetValue(t, Convert.ChangeType(value, property.PropertyType.GetGenericArguments().First())); 
+                    property.SetValue(t, Convert.ChangeType(value, property.PropertyType.GetGenericArguments().First(), CultureInfo.InvariantCulture)); 
  
                     continue; 
                 } 
