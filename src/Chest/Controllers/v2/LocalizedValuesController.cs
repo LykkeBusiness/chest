@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Asp.Versioning;
 using AutoMapper;
 using Chest.Client.Api;
 using Chest.Client.Models;
