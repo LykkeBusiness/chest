@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Asp.Versioning;
 using Autofac;
 using Chest.Data.Repositories;
 using Chest.Extensions;
