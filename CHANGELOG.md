@@ -1,3 +1,10 @@
+## 2.36.0 - Nova 2. Delivery 41 (March 29, 2024)
+### What's changed
+* LT-5439: Update packages.
+
+
+
+
 ## 2.35.0 - Nova 2. Delivery 40 (February 28, 2024)
 ### What's changed
 * LT-5286: Step: deprecated packages validation is failed.
