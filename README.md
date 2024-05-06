@@ -51,6 +51,57 @@ These available variables are detailed below:
 
 ### Settings schema:
 <!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./template.json) -->
+<!-- The below code snippet is automatically added from ./template.json -->
+```json
+{
+  "ASPNETCORE_ENVIRONMENT": "String",
+  "ChestClientSettings": {
+    "ApiKey": "String"
+  },
+  "CHEST_CONNECTIONSTRING": "String",
+  "ConnectionStrings": {
+    "Chest": "String"
+  },
+  "CqrsSettings": {
+    "ConnectionString": "String",
+    "EnvironmentName": "String",
+    "RetryDelay": "DateTime"
+  },
+  "CQRS_CONNECTIONSTRING": "String",
+  "ENVIRONMENT": "String",
+  "serilog": {
+    "Enrich": [
+      "String"
+    ],
+    "minimumLevel": {
+      "default": "String"
+    },
+    "Properties": {
+      "Application": "String"
+    },
+    "Using": [
+      "String"
+    ],
+    "writeTo": [
+      {
+        "Args": {
+          "configure": [
+            {
+              "Args": {
+                "outputTemplate": "String"
+              },
+              "Name": "String"
+            }
+          ]
+        },
+        "Name": "String"
+      }
+    ]
+  },
+  "TZ": "String",
+  "urls": "String"
+}
+```
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ### Log specific configuration
