@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Asp.Versioning;
 using Autofac;
 using Chest.Data.Repositories;
@@ -16,6 +17,7 @@ using Lykke.Cqrs;
 using Lykke.SettingsReader.SettingsTemplate;
 using Lykke.Snow.Common.Startup;
 using Lykke.Snow.Common.Startup.ApiKey;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
@@ -187,7 +189,7 @@ namespace Chest
             {
                 app.UseHsts();
             }
-            
+
             app.UseMiddleware<ExceptionHandlerMiddleware>();
 
             app.UseRouting();
@@ -195,10 +197,10 @@ namespace Chest
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.AddSettingsTemplateEndpoint();
                 endpoints.MapControllers();
+                endpoints.AddSettingsTemplateEndpoint();
             });
-            
+
             app.UseSwagger(c =>
             {
                 c.PreSerializeFilters.Add((doc, req) => doc.Servers = new List<OpenApiServer>
@@ -231,7 +233,7 @@ namespace Chest
                 }
                 logger.LogInformation("Application started");
             });
-            
+
             app.InitializeDatabase();
         }
 
@@ -254,4 +256,4 @@ namespace Chest
             return info;
         }
     }
-}
+    }
