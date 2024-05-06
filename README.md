@@ -49,6 +49,10 @@ These available variables are detailed below:
   | urls | Url that service will be exposed |
   | serilog:* | Serilog settings including output template, rolling file interval and file size limit |
 
+### Settings schema:
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./bbwebapi-settings.json) -->
+<!-- MARKDOWN-AUTO-DOCS:END -->
+
 ### Log specific configuration
 
 - Logging mechanism in place uses Serilog with some enrichers to exposed better and more detailed logs (i.e [FromLogContext](https://github.com/serilog/serilog/wiki/Enrichment), [WithMachineName](https://github.com/serilog/serilog-enrichers-environment), [WithThreadId](https://github.com/serilog/serilog-enrichers-thread), [WithDemystifiedStackTraces](https://github.com/nblumhardt/serilog-enrichers-demystify)).
