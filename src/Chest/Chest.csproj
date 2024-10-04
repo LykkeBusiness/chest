@@ -10,7 +10,7 @@
   </PropertyGroup>
   
   <PropertyGroup>
-    <Version>2.36.0</Version>
+    <Version>2.37.0</Version>
     <Authors>Chest Contributors</Authors>
     <Company>Lykke</Company>
     <Copyright>Copyright (c) 2020 Lykke Corp. See the LICENSE file in the project root for more information.</Copyright>
@@ -30,6 +30,9 @@
     <EmbeddedResource Remove="wwwroot\**" />
     <None Remove="logs\**" />
     <None Remove="wwwroot\**" />
+    <None Update="Dockerfile">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -41,7 +44,7 @@
     <PackageReference Include="CacheManager.Serialization.Json" Version="1.2.0" />
     <PackageReference Include="EFCoreSecondLevelCacheInterceptor" Version="3.7.3" />
     <PackageReference Include="JsonDiffPatch.Net" Version="2.3.0" />
-    <PackageReference Include="Lykke.MarginTrading.AssetService.Contracts" Version="11.9.3" />
+    <PackageReference Include="Lykke.MarginTrading.AssetService.Contracts" Version="11.10.0" />
     <PackageReference Include="Lykke.Middlewares" Version="3.6.3" />
     <PackageReference Include="Lykke.Snow.Common.Startup" Version="3.12.0" />
     <PackageReference Include="LykkeBiz.Common" Version="8.3.0" />
