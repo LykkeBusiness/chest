@@ -1,3 +1,8 @@
+## 2.38.0 - Nova 2. Delivery 46 (September 27, 2024)
+### What's changed
+* LT-5600: Migrate to net 8.
+
+
 ## 2.37.0 - Nova 2. Delivery 44 (August 15, 2024)
 ### What's changed
 * LT-5330: Unify dockerfiles management.
