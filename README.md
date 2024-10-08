@@ -50,7 +50,7 @@ These available variables are detailed below:
   | serilog:* | Serilog settings including output template, rolling file interval and file size limit |
 
 ### Settings schema:
-<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./bbwebapi-settings.json) -->
+<!-- MARKDOWN-AUTO-DOCS:START (CODE:src=./template.json) -->
 <!-- MARKDOWN-AUTO-DOCS:END -->
 
 ### Log specific configuration
