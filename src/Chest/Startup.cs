@@ -15,6 +15,7 @@ using EFCoreSecondLevelCacheInterceptor;
 using JetBrains.Annotations;
 using Lykke.Cqrs;
 using Lykke.SettingsReader.SettingsTemplate;
+using Lykke.Snow.Common.AssemblyLogging;
 using Lykke.Snow.Common.Startup;
 using Lykke.Snow.Common.Startup.ApiKey;
 using Microsoft.AspNetCore.Http;
@@ -54,6 +55,7 @@ namespace Chest
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAssemblyLogger();
             services.AddDbContext<ApplicationDbContext>((serviceProvider, options) => options
                 .UseSqlServer(_configuration.GetConnectionString("Chest"))
                 .AddInterceptors(serviceProvider.GetRequiredService<SecondLevelCacheInterceptor>()));
@@ -224,6 +226,8 @@ namespace Chest
                 try
                 {
                     app.ApplicationServices.GetRequiredService<ICqrsEngine>().StartSubscribers();
+                    
+                    app.ApplicationServices.GetRequiredService<AssemblyLogger>().StartLogging();
                 }
                 catch (Exception e)
                 {
