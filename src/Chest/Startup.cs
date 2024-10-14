@@ -225,9 +225,9 @@ namespace Chest
                 var logger = app.ApplicationServices.GetService<ILogger<Startup>>();
                 try
                 {
-                    app.ApplicationServices.GetRequiredService<ICqrsEngine>().StartSubscribers();
-                    
                     app.ApplicationServices.GetRequiredService<AssemblyLogger>().StartLogging();
+                    
+                    app.ApplicationServices.GetRequiredService<ICqrsEngine>().StartSubscribers();
                 }
                 catch (Exception e)
                 {
