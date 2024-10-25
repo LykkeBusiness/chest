@@ -13,17 +13,17 @@
     <PackageVersion Include="EFCoreSecondLevelCacheInterceptor" Version="3.7.3" />
     <PackageVersion Include="FluentAssertions" Version="6.7.0" />
     <PackageVersion Include="JsonDiffPatch.Net" Version="2.3.0" />
-    <PackageVersion Include="Lykke.Contracts" Version="3.0.0" />
-    <PackageVersion Include="Lykke.MarginTrading.AssetService.Contracts" Version="11.10.0" />
+    <PackageVersion Include="Lykke.Contracts" Version="4.0.1" />
+    <PackageVersion Include="Lykke.MarginTrading.AssetService.Contracts" Version="13.0.2" />
     <PackageVersion Include="Lykke.Middlewares" Version="3.6.3" />
     <PackageVersion Include="Lykke.Snow.Common" Version="4.0.3" />
-    <PackageVersion Include="Lykke.Snow.Common.Startup" Version="4.0.0" />
+    <PackageVersion Include="Lykke.Snow.Common.Startup" Version="4.1.0" />
     <PackageVersion Include="LykkeBiz.Common.MsSql" Version="5.0.2" />
     <PackageVersion Include="LykkeBiz.Common" Version="8.3.0" />
-    <PackageVersion Include="LykkeBiz.HttpClientGenerator" Version="6.0.0" />
+    <PackageVersion Include="LykkeBiz.HttpClientGenerator" Version="6.1.0" />
     <PackageVersion Include="LykkeBiz.Logs.Serilog" Version="3.3.3" />
     <PackageVersion Include="LykkeBiz.SettingsReader" Version="9.0.1" />
-    <PackageVersion Include="LykkeBiz.Snow.Cqrs" Version="5.1.0" />
+    <PackageVersion Include="LykkeBiz.Snow.Cqrs" Version="7.0.1" />
     <PackageVersion Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.7" />
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.7" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.7" />
