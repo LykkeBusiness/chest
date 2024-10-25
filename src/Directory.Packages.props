@@ -16,7 +16,7 @@
     <PackageVersion Include="Lykke.Contracts" Version="4.0.1" />
     <PackageVersion Include="Lykke.MarginTrading.AssetService.Contracts" Version="13.0.2" />
     <PackageVersion Include="Lykke.Middlewares" Version="3.6.3" />
-    <PackageVersion Include="Lykke.Snow.Common" Version="4.0.3" />
+    <PackageVersion Include="Lykke.Snow.Common" Version="5.0.1" />
     <PackageVersion Include="Lykke.Snow.Common.Startup" Version="4.1.0" />
     <PackageVersion Include="LykkeBiz.Common.MsSql" Version="5.0.2" />
     <PackageVersion Include="LykkeBiz.Common" Version="8.3.0" />
