@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <LangVersion>8.0</LangVersion>
-    <Version>1.0.368</Version>
+    <Version>2.39.0</Version>
     <Description>Provides a client on Chest.
 The chest is a metadata service which saves and fetches data against three keys. Category, Collection and Key.
 It also provides endpoints to fetch list of all categories, collections and keys in the system.</Description>
