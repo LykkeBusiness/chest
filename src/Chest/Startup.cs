@@ -14,6 +14,7 @@ using Chest.Settings;
 using EFCoreSecondLevelCacheInterceptor;
 using JetBrains.Annotations;
 using Lykke.Cqrs;
+using Lykke.SettingsReader.SettingsTemplate;
 using Lykke.Snow.Common.AssemblyLogging;
 using Lykke.Snow.Common.Startup;
 using Lykke.Snow.Common.Startup.ApiKey;
@@ -166,6 +167,7 @@ namespace Chest
 
             services.AddScoped<IAuditRepository, AuditRepository>();
             services.AddScoped<IAuditService, AuditService>();
+            services.AddSettingsTemplateGenerator();
         }
 
         [UsedImplicitly]
@@ -198,6 +200,7 @@ namespace Chest
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.AddSettingsTemplateEndpoint();
             });
 
             app.UseSwagger(c =>
