@@ -90,7 +90,7 @@ namespace Chest
             );
             services.AddSingleton(typeof(ICacheManager<>), typeof(BaseCacheManager<>));
             services.AddSingleton(typeof(ICacheManagerConfiguration), cacheManagerConfiguration);
-            
+
 
 
             // Configure versions
@@ -114,7 +114,7 @@ namespace Chest
 
                 // This make replacement of v{version:apiVersion} to real version of corresponding swagger doc, i.e. v1
                 options.DocumentFilter<ReplaceVersionWithExactValueInPath>();
-                
+
                 // This exclude endpoint not specified in swagger version, i.e. MapToApiVersion("99")
                 options.DocInclusionPredicate((version, desc) =>
                 {
@@ -130,7 +130,7 @@ namespace Chest
                         .OfType<MapToApiVersionAttribute>()
                         .SelectMany(attr => attr.Versions)
                         .ToArray();
-                    
+
                     return versions.Any(v => $"v{v.ToString()}" == version) && (maps.Length == 0 || maps.Any(v => $"v{v.ToString()}" == version));
                 });
 
@@ -139,7 +139,7 @@ namespace Chest
                     options.AddApiKeyAwareness();
                 }
             }).AddSwaggerGenNewtonsoftSupport();
-            
+
             // Default settings for NewtonSoft Serializer
             JsonConvert.DefaultSettings = () =>
             {
@@ -169,7 +169,7 @@ namespace Chest
             services.AddScoped<IAuditService, AuditService>();
             services.AddSettingsTemplateGenerator();
         }
-        
+
         [UsedImplicitly]
         public virtual void ConfigureContainer(ContainerBuilder builder)
         {
