@@ -99,7 +99,6 @@ These available variables are detailed below:
       }
     ]
   },
-  "TEST_CQRS_CONNECTIONSTRING": "String",
   "TZ": "String"
 }
 ```
