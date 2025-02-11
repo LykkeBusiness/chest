@@ -43,7 +43,7 @@ jobs:
       release_name: ${{ github.event.inputs.release_name }}
       excluded_vulnerable_packages: ${{ github.event.inputs.excluded_vulnerable_packages }}
       excluded_deprecated_packages: ${{ github.event.inputs.excluded_deprecated_packages }}
-      path: '.src/'
+      path: './src'
       nuget-project-path: './src/Chest.Client'
       changelog_path: '.'
     secrets:
